@@ -130,13 +130,13 @@ x_train_scaled = np.copy(x_train)
 x_test_scaled = np.copy(x_test)
 x_train_scaled.shape
 ```
-# To scale the Age column
+## To scale the Age column
 ```py
 x_train_scaled[:,2] = scaler_age.transform(x_train[:,2].reshape(-1, 1)).reshape(-1)
 x_test_scaled[:,2] = scaler_age.transform(x_test[:,2].reshape(-1,1)).reshape(-1)
 ```
 
-# Creating the model
+## Creating the model
 ```py
 ai_brain = Sequential([
      Dense(8,input_shape=[8]),
@@ -172,22 +172,22 @@ print(confusion_matrix(y_test_truevalue,x_test_predictions))
 print(classification_report(y_test_truevalue,x_test_predictions))
 ```
 
-# Saving the Model
+## Saving the Model
 ```py
 ai_brain.save('customer_classification_model.h5')
 ```
-# Saving the data
+## Saving the data
 ```py
 with open('customer_data.pickle', 'wb') as fh:
    pickle.dump([X_train_scaled,y_train,X_test_scaled,y_test,customers_1,customer_df_cleaned,scaler_age,enc,one_hot_enc,le], fh)
 ```
    
-# Loading the Model
+## Loading the Model
 ```py
 ai_brain = load_model('customer_classification_model.h5')
 ```
 
-# Loading the data
+## Loading the data
 ```py
 with open('customer_data.pickle', 'rb') as fh:
    [X_train_scaled,y_train,X_test_scaled,y_test,customers_1,customer_df_cleaned,scaler_age,enc,one_hot_enc,le]=pickle.load(fh)
@@ -198,26 +198,26 @@ print(x_single_prediction)
 print(le.inverse_transform(x_single_prediction))
 ```
 
-## Dataset Information
+### Dataset Information
 ![output](./images/dataset.png)
 
 
 ## OUTPUT
 
-### Training Loss, Validation Loss Vs Iteration Plot
+#### Training Loss, Validation Loss Vs Iteration Plot
 
 ![output](./images/graph.png)
 
-### Classification Report
+#### Classification Report
 
 ![output](./images/c_report.png)
 
-### Confusion Matrix
+#### Confusion Matrix
 
 ![output](./images/c_matrix.png)
 
 
-### New Sample Data Prediction
+#### New Sample Data Prediction
 
 ![output](./images/new_input.png)
 
